@@ -1,0 +1,548 @@
+* Requisitos Funcionales
+
+* MODULO 01 Registro de clientes
+
+El usuario Accede al sistema siguiendo una serie de pasos para el registro a nuestra plataforma
+El cliente ingresa a la plataforma (web o app cancha gremio).
+Realiza el Formulario de registro
+Completa sus datos básicos:
+Nombre completo
+Documento de identidad
+Teléfono y/o correo electrónico
+Contraseña de acceso
+Validación de datos
+El sistema verifica que el correo o número no estén ya registrados.
+Aceptación de términos y condiciones
+El cliente confirma las políticas de uso y reservas.
+Creación de cuenta
+El sistema guarda la información y genera un perfil único para el cliente.
+Confirmación
+El cliente recibe un correo o mensaje de confirmación de su registro
+
+* MODULO 02 Crear nuevas reservas
+
+Ingreso al sistema
+El administrador o el cliente accede al software (web o aplicación  cancha gremio).
+Registro del cliente (si es nuevo)
+Se ingresan datos básicos: nombre, número de contacto, correo, etc.
+Selección de fecha y hora
+El cliente elige el día y la hora disponibles en el calendario del sistema.
+El software debe mostrar en tiempo real qué horarios están ocupados y cuáles libres.
+Duración de la reserva
+Normalmente se define por bloques de tiempo (ejemplo: 1 hora, 90 minutos, 2 horas).
+Confirmación de la cancha
+Si el complejo tiene varias canchas, el usuario selecciona la deseada (Cancha 1, Cancha 2, techada, etc.).
+Método de pago
+Puede pagarse de inmediato (transferencia, tarjeta, app de pagos) o dejar un abono y cancelar el resto en el lugar.
+Confirmación de la reserva
+El sistema genera un comprobante o código de reserva.
+Se envía una notificación al cliente (correo, SMS o WhatsApp).
+
+* MODULO 03 Confirmación automática de reservas
+
+*Ingreso al sistema: Cliente o administrador accede al software.
+*Registro del cliente: Se ingresan los datos básicos si es nuevo.
+*Selección de cancha, fecha y hora: El cliente elige horario disponible.
+*Definir duración: Bloque de tiempo de la reserva (ej. 1hora).
+*Pago: Puede ser total o abono, según política del lugar.
+*Generación automática de reserva: El sistema registra la reserva y cambia el estado a “confirmada” si se cumplen las condiciones (pago registrado, horario disponible).
+*Envío de confirmación automática: Se envía al cliente por correo, SMS o notificación push,
+*Datos de la reserva
+*Código o QR de confirmación
+*Instrucciones adicionales
+*Recordatorio automático (opcional): Sistema envía aviso antes de la reserva para reducir ausencias.
+
+* MODULO 04 Procesar pagos
+
+Ingreso al sistema: Cliente o administrador accede al software.
+Registro del cliente: Se ingresan datos básicos si es nuevo.
+Selección de cancha, fecha y hora: Cliente elige horario disponible.
+Definir duración: Tiempo de la reserva (ej. 1 hora).
+Procesar pago:
+Efectivo, transferencia, tarjeta o app de pago.
+Puede ser pago total o abono.
+Confirmación automática: Sistema registra la reserva y envía comprobante al cliente.
+Recordatorio automático (opcional): Aviso antes de la reserva para reducir ausencias.
+Generación de comprobantes
+Registrar la reserva: Datos del cliente, cancha, fecha, hora y duración.
+Asignar un código único: Número de reserva o QR.
+Generar comprobante automáticamente: Incluye datos de la reserva y estado de pago.
+Enviar al cliente: Por correo, SMS, app o imprimir en recepción.
+Guardar en el sistema: Para control interno y futuras referencias.                                                                            El comprobante de reserva lo genera generalmente el sistema de reservas, no una persona manualmente. Pero hay roles involucrados: 
+
+* MODULO 05 Roles de Usuario
+
+Administrador
+Gestiona reservas, usuarios, horarios, precios y reportes.
+Control total del sistema.
+Recepcionista / Personal
+Registra reservas manuales, verifica pagos y entrega comprobantes.
+Modifica reservas dentro de ciertos límites.
+Cliente / Usuario final
+Hace reservas, consulta disponibilidad y recibe comprobantes.
+
+* MODULO 06 Cancelación de reservas
+
+Solicitar cancelación: Cliente o personal del sistema.
+Verificar políticas: Plazos y posibles penalizaciones o devoluciones.
+Actualizar estado: Cambiar la reserva a “cancelada” y liberar el horario.
+Enviar notificación al cliente: Confirmación de cancelación y detalles de pago.
+Notificación interna (opcional): Avisar al personal de la cancha.
+
+* MODULO 07 Inicio de sesión
+
+Módulo encargado de validar la identidad de cada usuario para acceder al sistema, protegiendo la información mediante credenciales seguras y registros de actividad.              
+Ingresar usuario y contraseña.
+Validar datos en la base de datos.
+Permitir acceso si son correctos, mostrar error si no.
+Crear sesión para mantener al usuario conectado
+
+* MODULO 08 Programar  Eventos
+
+Definir evento: tipo, fecha, hora, duración y cancha.
+Registrar en el sistema: incluir descripción, cupo y reglas.
+Asignar responsables: administrador o personal a cargo.
+Notificar participantes: enviar avisos automáticos o mostrar en calendario.
+Seguimiento: inscripciones, pagos y estado del evento.
+Roles:
+Administrador: crea y gestiona eventos.
+Personal/Recepcionista: ayuda o registra eventos menores.
+Cliente: participa únicamente
+
+* MODULO 09 Notificaciones y Recordatorios
+
+Acciones que generan notificación: reserva, cancelación, recordatorio, cambio de evento.
+Mensaje: incluir fecha, hora, cancha, código y detalles importantes.
+Envío automático: el sistema envía al registrarse la acción.
+Canales: correo, SMS, notificación push.
+Destinatarios:
+Cliente: confirmaciones, recordatorios, cancelaciones.
+Personal/Recepcionista: avisos internos.
+Administrador: alertas y reportes.
+
+* MODULO 10 Reportes Administrativos
+
+Reservas: cantidad de reservas por día, semana o mes.
+Pagos e ingresos: totales, pendientes, abonos y devoluciones.
+Ocupación de canchas: horarios más solicitados, canchas más usadas.
+Eventos: participación, pagos y resultados.
+Cancelaciones y no shows: registro de reservas canceladas o ausencias.
+Destinatarios / roles
+Administrador: recibe todos los reportes completos.
+Contador / Finanzas: recibe reportes de pagos, ingresos y devoluciones.
+Recepcionista / Persoal: recibe reportes operativos, como reservas y ocupación de canchas.
+Generación y frecuencia
+Automática o manual desde el sistema.
+Puede ser diaria, semanal o mensual según necesidad.
+
+* MODULO 11 Historial de Clientes
+
+Conocer patrones de uso del cliente (frecuencia, horarios preferidos).
+Gestionar pagos pendientes o abonos.
+Ofrecer promociones personalizadas o fidelización.
+Resolver conflictos o dudas sobre reservas pasadas.
+Cómo se usa
+Acceso desde el perfil del cliente en el sistema.
+Se puede filtrar por fechas, tipo de reserva, pago o evento.
+Permite generar reportes individuales para análisis o control.
+Quién lo maneja
+Administrador: acceso completo, para análisis y gestión.
+Recepcionista / Personal: acceso limitado, para asistencia al cliente.
+Cliente: puede ver su propio historial en su perfil (si el sistema lo permite)
+
+* MODULO 12 Modulo de canchas
+
+Definición del módulo
+Parte del sistema encargado de administrar todo lo relacionado con la cancha:
+Reservas
+Disponibilidad de horarios
+Pagos y cobros
+Comprobantes
+Eventos y promociones
+Diseño de la base de datos
+Tablas principales:
+Canchas (nombre, tipo, capacidad, ubicación)
+Reservas (cliente, fecha, hora, estado, pago)
+Clientes (datos personales, historial)
+Pagos (tipo, monto, estado)
+Promociones y descuentos
+
+* MODULO 13 Administra promociones y descuentos
+
+Crear ofertas especiales para atraer clientes o incentivar reservas.
+Ejemplos: descuentos por horario, 2x1, paquetes de varias reservas, promociones para clientes frecuentes.
+Cómo se hace
+Definir reglas de la promoción: fechas, horarios, canchas, porcentaje de descuento o monto fijo.
+Registrar la promoción en el sistema para que se aplique automáticamente al generar la reserva.
+Configurar límites: número de usos, vigencia, combinaciones con otras ofertas.
+Quién lo ejecuta
+Administrador: crea, modifica y elimina promociones; controla límites y vigencia.
+Recepcionista / Personal: aplica promociones manualmente si el sistema lo permite o asesora al cliente.
+Cliente: recibe automáticamente la promoción al hacer la reserva (no la crea).
+Beneficios
+Incrementa reservas en horarios específicos.
+Fideliza clientes frecuentes.
+Facilita control de ingresos y seguimiento de promociones efectivas. 
+
+* MODULO 14 Organizar torneos o campeonatos
+
+Quiénes podran organizar
+Administrador: crea y gestiona todo el torneo.
+Personal/Recepcionista: apoya en inscripciones, control de partidos y resultados.
+Equipos/Jugadores: solo participan y reciben notificaciones.  realizando su organizacion para un control de un buen evento
+ Tipo (amistoso, eliminatoria, liga).
+Reglas (tiempo de juego, cantidad de jugadores, sistema de puntuación).
+Fecha de inicio y fin.
+Registro de equipos o jugadores
+Inscripción con datos y pago de inscripción (si aplica).
+Asignar cupos y categorías.
+Programar partidos
+Asignar horarios y canchas en el sistema.
+Evitar choques de horarios con reservas normales.
+Gestión del torneo
+Actualizar tablas de posiciones o llaves eliminatorias.
+Notificaciones
+Enviar recordatorios de partidos a equipos.
+Avisar cambios de horario o resultados.
+Cierre del torneo
+Publicar campeones y estadísticas.
+Generar reportes finales (ingresos, participación, ocupación de canchas).
+
+* MODULO 15 Registrar fecha de entrega de cancha
+
+El usuario Selecciona cancha
+Identificar cuál cancha será entregada.
+Asignar fecha y hora de entrega
+Registrar en el calendario del sistema la fecha programada.
+Registrar tareas de alistamiento
+Limpieza del campo.
+Revisión de iluminación y sonido.
+Preparación de balones, chalecos u otros implementos.
+Guardar registro
+El sistema almacena fecha + cancha + tareas asignadas.
+Confirmación
+El personal recibe notificación de la fecha y pendientes de alistamiento.
+El cliente puede ser notificado de la disponibilidad de la cancha.
+Quién lo ejecuta:
+Administrador: programa la fecha y asigna al personal.
+Personal de logística/mantenimiento: realiza el alistamiento.
+Cliente: recibe confirmación de que la cancha estará lista en la fecha y hora indicada.
+
+* MODULO 16 Registrar comentarios
+
+Ingreso al sistema
+Cliente o administrador abre la sección de comentarios.
+Escribir comentario
+Texto con observación, sugerencia o reclamo.
+Opción de calificación (ej. estrellas).
+Guardar comentari
+Se asocia a la reserva, cancha o usuario.
+Almacenamiento
+El sistema guarda el comentario en la base de datos con fecha y autor.
+Visualización
+Administrador y personal lo pueden revisar.
+Cliente puede ver sus propios comentarios o valoraciones generales.
+
+* MODULO 17 Generar reportes personalizados
+
+Acceder al módulo de reportes
+Disponible para administrador o personal autorizado.
+Seleccionar criterios de reporte
+Fechas (rango de días, semanas o meses).
+Tipo de reporte (reservas, pagos, uso de cancha, clientes, promociones).
+Filtros adicionales (estado de reservas, equipos, ingresos, etc.).
+Configurar formato de salida
+Pantalla, PDF, Excel u otro formato.
+Generar reporte
+El sistema procesa la información según los filtros elegidos.
+Guardar o exportar
+Se almacena en el sistema o se descarga para uso externo.
+
+* Quién los genera:
+Administrador: crea, consulta y descarga reportes completos.
+Personal autorizado: puede generar reportes limitados (ej. reservas del día).
+
+* MODULO 18 Programar Mantenimientos Periodicos
+
+Definir tipo de mantenimiento
+Limpieza profunda de la cancha.
+Revisión de iluminación y equipos.
+Reparación de superficie o instalaciones.
+Establecer frecuencia
+Diario, semanal, mensual o según recomendación del fabricante o normas de seguridad.
+Asignar responsables
+Personal de mantenimiento o administrador encargado de supervisar.
+Registrar en el sistema
+Fecha y hora programada.
+Tareas específicas a realizar.
+Cancha o área afectada.
+Notificaciones automáticas
+Avisar al personal encargado.
+Informar a los clientes si la cancha estará fuera de servicio.
+Seguimiento y registro
+Marcar tareas completadas en el sistema.
+Registrar observaciones y mantenimiento realizado para historial.
+*Quién lo ejecuta:
+Administrador: programa y supervisa el mantenimiento.
+Personal de mantenimiento: realiza las tareas asignadas.
+Clientes: reciben notificación si la cancha no está disponible.
+
+* MODULO 19 Integración con redes sociales para promocione
+
+Este módulo permite conectar el sistema con redes sociales como Facebook, Instagram  para facilitar la promoción de eventos, descuentos o novedades del centro deportivo. Está orientado a mejorar la visibilidad y aumentar la participación de clientes a través de canales digitales ya utilizados por ellos.
+Pasos de uso:
+Ingresar al panel de administrador y acceder al módulo de "Promociones y redes sociales".
+Seleccionar el tipo de promoción a publicar: evento especial, descuento, lanzamiento de servicio, etc.
+Redactar el contenido de la publicación (texto, emojis, hashtags, enlaces).
+Adjuntar imágenes o videos promocionales si se desea.
+Elegir en qué redes sociales se publicará la promoción (Facebook, Instagram, WhatsApp, entre otras).
+Previsualizar la publicación antes de enviarla para confirmar que se vea correctamente.
+Programar la publicación para una fecha y hora específica o publicarla inmediatamente.
+Confirmar la acción y permitir que el sistema publique el contenido automáticamente.
+
+* MODULO 20 Modulo de Comunicacion
+
+Este módulo facilita la comunicación interna entre usuarios del sistema, especialmente entre clientes, personal autorizado y el administrador. Está diseñado para asegurar que los mensajes importantes se transmitan de manera clara y rápida, mejorando la coordinación y atención al cliente.
+Pasos de uso:
+Iniciar sesión en el sistema con un usuario autorizado (cliente, personal o administrador).
+Acceder al módulo de comunicación desde el menú principal.
+Seleccionar el destinatario del mensaje, ya sea un usuario específico, grupo de usuarios o el administrador.
+Redactar el mensaje en el espacio destinado, incluyendo texto, imágenes o archivos adjuntos si es necesario.
+Enviar el mensaje y esperar confirmación de entrega.
+Recibir notificaciones automáticas cuando se reciba una respuesta o mensaje nuevo.
+Revisar el historial de conversaciones para mantener el seguimiento y control de las comunicaciones.
+
+* MODULO 21 Comunicación directa entre usuarios y Administrador
+
+Este sistema establece un canal de comunicación directa y eficiente entre los usuarios (clientes o personal) y el administrador, facilitando la resolución rápida de dudas, problemas o solicitudes relacionadas con el servicio.
+Pasos de uso:
+El usuario inicia sesión en el sistema con sus credenciales.
+Desde el menú principal, accede al módulo de comunicación directa con el administrador.
+El usuario redacta su mensaje, especificando claramente la consulta, solicitud o reporte.
+Puede adjuntar documentos, imágenes o capturas que ayuden a explicar su situación.
+Envía el mensaje y recibe una notificación de que el administrador ha sido contactado.
+El administrador recibe la notificación y revisa el mensaje en su panel de administración.
+El administrador responde directamente a través del sistema, brindando asistencia o solución.
+El usuario recibe la respuesta y puede continuar la comunicación hasta resolver su inquietud.
+Todo el historial de comunicación queda registrado para futuras referencias.
+
+* MODULO 22 Actualizar datos de clientes
+
+Este sistema permite a los usuarios autorizados, como el administrador o el personal de atención, modificar y mantener actualizada la información personal y de contacto de los clientes para asegurar la correcta gestión y comunicación.
+Pasos de uso:
+Iniciar sesión con usuario autorizado (administrador o personal).
+Acceder al módulo de gestión de clientes desde el menú principal.
+Buscar al cliente mediante su nombre, ID o datos de contacto.
+Visualizar la ficha del cliente con toda su información actual.
+Seleccionar la opción para editar o actualizar datos.
+Modificar campos como nombre, dirección, teléfono, correo electrónico y otra información relevante.
+Revisar que los datos ingresados sean correctos y estén completos.
+Guardar los cambios en el sistema.
+Confirmar que la actualización se haya realizado correctamente y notificar al cliente si es necesario.
+Registrar automáticamente quién realizó la modificación y la fecha/hora de la actualización.
+
+* MODULO 23 Registrar abonos y saldos pendientes
+
+Este sistema permite llevar un control detallado de los pagos realizados por los clientes y los saldos pendientes, facilitando la gestión financiera y el seguimiento de cuentas por cobrar.
+Pasos de uso:
+Iniciar sesión con usuario autorizado (administrador o personal financiero).
+Acceder al módulo de gestión de pagos y saldos desde el menú principal.
+Buscar al cliente por nombre, ID o número de cuenta.
+Visualizar el estado actual de su cuenta, incluyendo abonos realizados y saldos pendientes.
+Seleccionar la opción para registrar un nuevo abono.
+Ingresar los datos del pago: monto, método de pago, fecha y observaciones si las hay.
+Confirmar que el abono se registre correctamente en la cuenta del cliente.
+Actualizar automáticamente el saldo pendiente restando el monto abonado.
+Generar un comprobante de pago que puede ser impreso o enviado electrónicamente al cliente.
+Registrar todas las transacciones para auditoría y seguimiento.
+
+* MODULO 24 Registro de proveedores
+
+Este sistema permite al administrador o personal autorizado gestionar la información de los proveedores del centro deportivo, facilitando el control y la administración eficiente de las relaciones comerciales.
+Pasos de uso:
+Iniciar sesión con usuario autorizado (administrador o personal de compras).
+Acceder al módulo de gestión de proveedores desde el menú principal.
+Seleccionar la opción para crear un nuevo registro de proveedor.
+Ingresar los datos completos del proveedor, tales como nombre, dirección, teléfono, correo electrónico, tipo de servicio o producto que ofrece, y condiciones comerciales.
+Revisar y validar que la información ingresada sea correcta y esté completa.
+Guardar el registro en el sistema.
+Consultar, modificar o eliminar registros existentes según sea necesario, respetando las políticas internas.
+Mantener actualizado el historial de transacciones y relaciones con cada proveedor.
+Generar reportes relacionados con proveedores para auditoría o análisis.
+
+* MODULO 25 Inicio de sesión administrador
+
+Este sistema permite que el administrador acceda de manera segura a la plataforma para gestionar y supervisar las funciones administrativas del centro deportivo, garantizando que solo usuarios autorizados puedan ingresar.
+Pasos de uso:
+Acceder a la pantalla de inicio de sesión del sistema.
+Ingresar el nombre de usuario o correo electrónico asignado al administrador.
+Introducir la contraseña personal de manera segura.
+Enviar la solicitud de inicio de sesión.
+El sistema valida las credenciales verificando que sean correctas y que la cuenta esté activa.
+En caso de credenciales válidas, el administrador es dirigido al panel principal con acceso completo a sus funciones.
+Si las credenciales son incorrectas, el sistema muestra un mensaje de error e invita a reintentar.
+En caso de varios intentos fallidos, el sistema puede bloquear temporalmente la cuenta para proteger la seguridad.
+El sistema registra cada intento de inicio de sesión, exitoso o fallido, para auditoría y seguridad.
+
+* MODULO 26 Registrar entradas y salidas de insumos deportivos
+
+Ingreso al sistema                                        
+El administrador ingresa a la plataforma (web o app cancha gremio).
+Verificacion de permisos y autenticacion
+Inicia sesion con sus credenciales de administrador
+Se valida usuario,contraseña y permisos asignados
+Si la autenticacion es correcta, se habilita el acceso al modulo de inventario
+Acceso al modulo de insumos deportivos
+Desde el menu principal selecciona la opcion de insumos deportivos
+Se muestra la lista de insumos con nombre,categoria,cantidad disponible, estado y ubicacion
+Seleccion de accion (entrada o salida)
+El administrador elige entre dos opciones
+Registrar entrada (cuando se reciben insumos o se reincorporan después de un evento)
+Registrar salida ((cuando se entregan para uso en reservas, eventos, préstamos internos o cuando se reporta pérdida)
+Registro de entrada
+Seleccionar el insumo de la lista o crear uno nuevo
+Ingresar cantidad recibida
+Registrar datos complementarios: fecha de ingreso, proveedor, observaciones
+Presionar el boton registrar ( el sistema actualiza automaticamente el stock)
+Registro de salida
+Seleccionar el insumo correspondiente
+Ingresar cantidad entregada
+Registrar datos complementarios: Responsable, motivo de salida (prestamo, uso, perdida), fecha de salida
+Presionar el boton registrar ( el sistema descuenta automaticamente el stock)
+
+* MODULO 27 Registrar hora de ingreso y salida de los usuarios
+
+Ingreso al sistema                                        
+La recepcionista ingresa a la plataforma (web o app cancha gremio).
+Verificacion de permisos y autenticacion
+Inicia sesion con sus credenciales
+Se valida usuario,contraseña y permisos asignados
+Si la autenticacion es correcta, se habilita el acceso al modulo de control de asistencia
+Seleccion del usuario
+El cliente se presenta en recepcion
+La recepcionista busca el usuario en el sistema mediante: Numero de documento, id del usuario
+Registro de hora de ingreso
+La recepcionista selecciona al usuario en el sistema
+Pulsa el boton registrar ingreso
+El sistema toma automaticamente: feha, hora exacta, recepcionista que realizo el registro
+El sistema confirma el registro en pantalla
+Registro de hora de salida
+Cuando el usuario se retira, la recepcionista lo busca nuevamente en el sistema
+Selecciona al usuario y pulsa registrar salida
+El sistema guarda fecha, hora y vincula el registro con el ingreso del mismo dia
+Confirmacion
+La recepcionista visualiza que el registro quede guardado
+
+* MODULO 28 Generar reportes de asistencia a eventos
+
+Ingreso al sistema                                        
+La recepcionista o el administrador ingresa a la plataforma (web o app cancha gremio).
+Verificacion de permisos y autenticacion
+Inicia sesion con sus credenciales
+Se valida usuario,contraseña y permisos asignados
+Si la autenticacion es correcta, se habilita el acceso al modulo de reportes
+Acceso al módulo de reportes
+Desde el menu principal, se selecciona la opcion reportes de asistencia a eventos
+Seleccion de filtros
+El sistema despliega un formulario donde el usuario puede elegir criterios como: nombre del evento, fecha, estado (asistio, no asistio, llego tarde)
+Generacion del reporte
+El usuario pulsa generar reporte
+El sistema procesa la informacion en la base de datos
+Se muestra en pantalla una tabla con: nombre del evento, lista de asistentes, hora de ingreso y salida, estado de asistencia, responsable del registro (recepcionista, administrador)
+Exportacion del reporte
+El sistema ofrece opciones para descargar o exportar el reporte en: exel o pdf
+
+* MODULO 29 Olvido de contraseña
+
+Ingreso al sistema                                        
+El usuario abre la app o pag web
+En la pantalla de login selecciona la opcion ¿olvidaste tu contraseña?
+Ingreso de datos de recuperacion
+El sistema solicita al usuario uno de los siguientes datos: correo electronico registrado o numero de telefono registrado
+Envio de enlace o codigo de verificacion
+El sistema valida que el dato ingresado exista en la base de usuarios
+Si es valido envia un correo eletronico o SMS con : un enlace de recuperacion con tiempo de expiracion (20min) o un codigo temporal de verificacion
+Verificacion
+El usuario accede al enlace recibido o ingresa el codigo en el sistema
+El sistema valida que sea correcto y que no haya expirado
+Creacion de nueva contraseña
+El sistema despliega un formulario para ingresar: nueva contraseña, confirmacion nueva contraseña
+Se aplican reglas de seguridad (minimo 8 caracteres, combinacion de numeros y letras)
+Confirmacion de restablecimiento
+El sistema actualiza la contraseña en la base de datos
+El usuario recibe una notificacion al correo electronico confirmando que la contraseña fue cambiada
+Redirecciona al usuario a la pantalla de login para iniciar sesion con la nueva contraseña
+
+* MODULO 30 Filtrar comentarios por tipo de servicio
+
+Ingreso al sistema                                        
+El usuario ingresa a la plataforma (web o app cancha gremio).
+En el menu principal selecciona el filtro comentarios
+El sitema despliega varias opciones para filtrar comentarios (tipo de servicio, puntaje, fecha)
+El usuario selecciona tipo de servicio
+El sistema despliega una lista de servicios registrados en la plataforma (torneo, alquiler de cancha, otro evento)
+El usuario elege uno o varios servicios
+El sistema consulta la base de datos y muestra unicamente los comentarios asociados al servicio seleccionado
+
+* MODULO 31 Filtrar comentarios por puntaje
+
+Ingreso al sistema                                        
+El usuario ingresa a la plataforma (web o app cancha gremio).
+En el menu principal selecciona el filtro comentarios
+El sitema despliega varias opciones para filtrar comentarios (tipo de servicio, puntaje, fecha)
+El usuario selecciona filtrar por puntaje
+El usuario puede seleccionar un puntaje especifico (5 estrellas) o seleccionar un rango de puntajes (entre 3 y 5 estrellas)
+El usuario confirma el filtro
+El sistema muestra unicamente los comentarios con calificacion dentro del puntaje seleccionado
+
+* MODULO 32 Filtrar comentarios por fecha
+
+Ingreso al sistema                                        
+El usuario ingresa a la plataforma (web o app cancha gremio).
+En el menu principal selecciona el filtro comentarios
+El sitema despliega varias opciones para filtrar comentarios (tipo de servicio, puntaje, fecha)
+El usuario selecciona el filtro fecha
+El sistema despliega un calendario para elegir
+El usuario puede seleccionar una fecha unica (comentarios de 23-03-2025) o un rango de fechas (del 01-04-2025 al 01-05-2025)
+El usuario selecciona y comfirma rango/fecha especifica
+El sistema consulta la base de datos y muestra únicamente los comentarios publicados dentro del periodo seleccionado.
+
+* MODULO 33 Ver Disponibilidad de calendario
+                 
+El usuario inicia sesión en la app móvil o página web
+Inicia sesion con sus credenciales
+Se valida usuario,contraseña y permisos asignados
+Accede al módulo Calendario y Reservas.
+El sistema despliega un calendario interactivo con los días y horarios disponibles.
+El usuario selecciona una fecha específica.
+El sistema muestra en tiempo real la disponibilidad de horarios para esa fecha, diferenciando: Disponible, ocupado, restringido
+El usuario puede navegar entre semanas y meses para visualizar otras fechas.
+Si la fecha y horario está ocupado, el sistema sugiere horarios alternativos cercanos.
+
+* MODULO 34 Estadisticas de uso
+
+Iniciar sesion
+El administrador abre la aplicación o página web.
+Verificacion de permisos y autenticacion
+Inicia sesion con sus credenciales
+Se valida usuario,contraseña y permisos asignados
+Si la autenticacion es correcta, se habilita el acceso al modulo de estadisticas
+Acceder al modulo de estadisticas
+Desde el menú principal selecciona la opción estadísticas
+Visualizar la vista general
+Se muestran tarhetas con los principales indicadores: Número de usuarios activos, reservas realizadas en el mes, porcentaje de asistencia a evento,servicios más utilizados,promedio de calificación/comentarios.
+Cada tarjeta debe mostrar la métrica y cuando aplique  su variación respecto a un periodo anterior.
+Aplicar filtros de análisis
+El administrador selecciona un rango de fechas (hoy, semana, mes, rango personalizado).
+El sistema actualiza los gráficos y tablas automáticamente
+Explorar gráficos y tablas
+El administrador puede cambiar la forma de visualización (barras, líneas, pastel, tabla).
+Puede pulsar sobre un gráfico para ver el detalle de datos (ej. listado de reservas o comentarios asociados).
+Consultar detalles
+Si selecciona un dato especifico (ejemolo.semana 20), el sistema muestra la informacion detallada en una ventana emergente
+Exportar informacion
+El administrador hace click en exportar, selecciona el formato (pdf,exel)
+El sistema genera el archivo y muestra mensaje de confirmacion
+Programar reportes automaticos
+El administrador puede definir que un reporte se envie automaticamente (ejemplo: semananal a las 7:00 pm)
+El sistema guarda la configuracion y confirma el agendamiento

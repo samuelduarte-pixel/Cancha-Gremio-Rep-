@@ -1,0 +1,1502 @@
+# Casos de Uso
+
+
+# CU01: Registro de Clientes
+
+## Nombre
+Registro de Clientes
+
+## Actores
+- Administrador
+- Sistema
+- Cliente
+
+## Descripción
+Permite que un nuevo cliente cree una cuenta en la plataforma ingresando sus datos básicos, aceptando las políticas de uso y validando que no exista un registro duplicado en el sistema.
+
+## Precondiciones
+- El cliente no debe estar registrado previamente en el sistema.
+
+## Flujo Normal
+
+1. El cliente ingresa a la plataforma (web o aplicación móvil).
+2. Selecciona la opción **“Registrarse”**.
+3. Completa el formulario con los datos básicos:
+   - Nombre completo
+   - Documento de identidad
+   - Teléfono o correo electrónico
+   - Contraseña
+4. El sistema valida que no existan registros con el mismo documento o medio de contacto.
+5. El cliente acepta los términos y condiciones de uso.
+6. El sistema crea la cuenta y genera un perfil único.
+7. El sistema envía un correo electrónico o mensaje de confirmación al cliente.
+8. El cliente accede a su perfil para utilizar las funciones del sistema:
+   - Reservas
+   - Pagos
+   - Historial
+   - Promociones
+
+## Flujos Alternos
+
+### 🔹 Datos Incorrectos
+Si el cliente ingresa datos inválidos o incompletos:
+- El sistema muestra un mensaje indicando el error.
+- Se solicita la corrección de los datos.
+
+### 🔹 Cliente Ya Registrado
+Si el documento o contacto ya existe:
+- El sistema notifica al cliente que ya está registrado.
+- Se sugiere iniciar sesión o recuperar contraseña.
+
+## Postcondiciones
+- El cliente queda registrado correctamente en la base de datos.
+- Se genera un perfil único asociado al cliente.
+- Se envía confirmación de registro.
+
+## Requisitos Asociados
+- Registro de clientes
+- Inicio de sesión cliente
+- Actualizar datos del cliente
+- Recuperar contraseña
+- Historial de clientes
+- Administrar promociones y descuentos
+- Comunicación directa
+
+# CU02: Inicio de Sesión de Clientes
+
+## Nombre
+Inicio de Sesión de Clientes
+
+## Actores
+- Cliente
+
+---
+
+## Descripción
+Permite que el cliente acceda al sistema mediante el ingreso de su usuario y contraseña, validando sus credenciales para iniciar una sesión activa.
+
+---
+
+## Precondiciones
+- El cliente debe estar previamente registrado en el sistema.
+- La cuenta no debe estar bloqueada o desactivada.
+
+---
+
+## Flujo Normal
+
+1. El cliente ingresa a la plataforma.
+2. Introduce su usuario (correo o documento) y contraseña.
+3. El sistema valida las credenciales ingresadas.
+4. Si los datos son correctos, el sistema concede acceso.
+5. Se inicia una sesión activa para el cliente.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Credenciales Incorrectas
+- Si el usuario o la contraseña son incorrectos:
+  - El sistema muestra un mensaje:  
+    > "Usuario o contraseña incorrectos."
+  - Permite reintentar el inicio de sesión.
+
+### 🔹 Cuenta Bloqueada
+- Si la cuenta está bloqueada:
+  - El sistema muestra un mensaje:  
+    > "Cuenta bloqueada. Contacte al administrador o recupere su contraseña."
+
+---
+
+## Postcondiciones
+- Se inicia una sesión activa del cliente.
+- Se registra en el sistema la fecha y hora de acceso.
+- El cliente puede acceder a las funcionalidades según su rol.
+
+---
+
+## Requisitos Asociados
+- Inicio de sesión cliente
+- Inicio de sesión administrador
+- Recuperar contraseña
+- Registro de clientes
+- Roles de usuario
+- Actualización de datos del cliente
+- Historial de clientes
+- Módulo de comunicación
+
+# CU03: Recuperar Contraseña
+
+## Nombre
+Recuperar Contraseña
+
+## Actores
+- Cliente
+- Sistema
+- Servicio de Correo / SMS
+
+---
+
+## Descripción
+Permite al usuario recuperar el acceso a su cuenta mediante un correo de verificación o código SMS, para restablecer su contraseña de manera segura.
+
+---
+
+## Precondiciones
+- El usuario debe tener un correo electrónico registrado en el sistema.
+- El usuario debe tener un número telefónico registrado.
+- La cuenta debe estar activa.
+
+---
+
+## Flujo Normal
+
+1. El usuario ingresa a la aplicación o página web.
+2. Selecciona la opción **"¿Olvidaste tu contraseña?"**.
+3. El sistema solicita ingresar correo electrónico o número telefónico.
+4. El sistema valida que el dato ingresado exista en la base de usuarios.
+5. El sistema envía:
+   - Un enlace de recuperación válido por 20 minutos  
+   **o**
+   - Un código temporal vía SMS.
+6. El sistema muestra un formulario para ingresar una nueva contraseña y confirmarla.
+7. El sistema valida que la nueva contraseña cumpla con los requisitos de seguridad.
+8. El sistema actualiza la contraseña en la base de datos (encriptada).
+9. El sistema envía una notificación de confirmación del cambio.
+10. El usuario puede iniciar sesión con su nueva contraseña.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Correo o Número No Registrado
+- Si el dato ingresado no existe:
+  - El sistema muestra el mensaje:  
+    > "El correo o número ingresado no está registrado en el sistema."
+
+### 🔹 Código o Enlace Expirado
+- Si el enlace o código supera el tiempo límite:
+  - El sistema muestra el mensaje:  
+    > "El enlace o código ha expirado. Solicite uno nuevo."
+
+### 🔹 Contraseña No Válida
+- Si la contraseña no cumple los requisitos de seguridad:
+  - El sistema indica las reglas necesarias (mínimo de caracteres, mayúscula, número, símbolo, etc.).
+  - Solicita corrección.
+
+---
+
+## Postcondiciones
+- La contraseña del usuario queda actualizada en la base de datos.
+- Se registra el evento de cambio de contraseña (timestamp).
+- Se envía notificación de confirmación al usuario.
+
+---
+
+## Requisitos Asociados
+- Olvido de contraseña
+- Inicio de sesión cliente
+- Inicio de sesión administrador
+- Registro de clientes
+- Actualizar datos de cliente
+- Roles de usuario
+- Notificaciones y recordatorios
+
+# CU04: Actualizar Datos de Cliente
+
+## Nombre
+Actualizar Datos de Cliente
+
+## Actores
+- Cliente
+- Administrador
+
+---
+
+## Descripción
+Permite que los usuarios autorizados, como el administrador o el personal de atención, modifiquen la información personal, de contacto y otros datos relevantes de los clientes registrados en el sistema.
+
+---
+
+## Precondiciones
+- El cliente debe existir previamente en la base de datos.
+- El usuario que realiza la acción debe tener permisos autorizados.
+- El usuario debe haber iniciado sesión en el sistema.
+
+---
+
+## Flujo Normal
+
+1. El usuario autorizado inicia sesión en el sistema.
+2. Accede al módulo **Gestión de Clientes** desde el menú principal.
+3. Busca al cliente mediante:
+   - Nombre
+   - Documento
+   - Datos de contacto
+4. El sistema muestra la ficha completa del cliente.
+5. El usuario selecciona la opción **"Actualizar datos"**.
+6. Se modifican los campos necesarios:
+   - Nombre
+   - Dirección
+   - Teléfono
+   - Correo electrónico
+7. El usuario revisa que la información actualizada sea correcta.
+8. El usuario confirma la acción seleccionando **"Guardar cambios"**.
+9. El sistema valida los datos ingresados.
+10. El sistema almacena la información actualizada del cliente en la base de datos.
+11. El sistema registra la acción en el historial de modificaciones (auditoría).
+
+---
+
+## Flujos Alternos
+
+### 🔹 Datos Inválidos
+- Si algún dato tiene formato incorrecto o está incompleto:
+  - El sistema muestra un mensaje indicando el error.
+  - Se solicita la corrección antes de guardar los cambios.
+
+---
+
+## Postcondiciones
+- Los datos del cliente quedan actualizados correctamente.
+- Se registra la fecha, hora y usuario que realizó la modificación.
+- El historial del cliente refleja los cambios realizados.
+
+---
+
+## Requisitos Asociados
+- Actualizar datos de cliente
+- Registro de clientes
+- Historial de clientes
+- Roles de usuario
+- Inicio de sesión administrador
+- Módulo de comunicación
+- Registrar comentarios
+
+# CU05: Crear Reservas
+
+## Nombre
+Crear Reservas
+
+## Actores
+- Cliente
+- Administrador
+- Sistema
+
+---
+
+## Descripción
+Permite que clientes o administradores creen una reserva de cancha seleccionando fecha, hora, duración, cancha disponible y método de pago.
+
+---
+
+## Precondiciones
+- El cliente debe estar registrado en el sistema.
+- El usuario debe haber iniciado sesión.
+- Debe existir disponibilidad en el calendario.
+- El módulo de gestión de canchas debe estar operativo.
+
+---
+
+## Flujo Normal
+
+1. El usuario (cliente o administrador) ingresa al sistema.
+2. Selecciona la opción **“Crear nueva reserva”** desde el menú principal.
+3. El sistema solicita la identificación del cliente.
+4. El usuario selecciona un cliente existente o registra uno nuevo (si no existe).
+5. El sistema muestra el calendario de disponibilidad.
+6. El usuario selecciona una fecha y hora disponible.
+7. El sistema muestra opciones de duración según bloques predeterminados.
+8. El usuario selecciona la duración de la reserva.
+9. El sistema muestra las canchas disponibles para ese horario.
+10. El usuario selecciona la cancha deseada.
+11. El sistema solicita el método de pago.
+12. El usuario elige:
+    - Pago completo  
+    - Abono parcial
+13. El sistema procesa o registra el pago.
+14. El usuario confirma la reserva.
+15. El sistema:
+    - Genera un comprobante o código único de reserva.
+    - Actualiza la disponibilidad de la cancha.
+    - Asocia el pago o saldo pendiente a la reserva.
+16. El sistema envía notificación de confirmación al cliente.
+
+---
+
+## Flujos Alternos
+
+### 🔹 No Disponibilidad en el Horario
+- Si el horario ya está ocupado:
+  - El sistema notifica que no hay disponibilidad.
+  - Permite seleccionar otro horario.
+
+### 🔹 Usuario No Registrado
+- Si el cliente no existe:
+  - El sistema solicita registrarlo antes de continuar.
+
+### 🔹 No Hay Canchas Disponibles
+- Si no hay canchas disponibles en el horario seleccionado:
+  - El sistema muestra mensaje informativo.
+  - Permite seleccionar otra fecha u horario.
+
+---
+
+## Postcondiciones
+- La reserva queda registrada en la base de datos.
+- La disponibilidad del horario y cancha se actualiza inmediatamente.
+- El pago o abono queda asociado a la reserva.
+- Se genera comprobante con código único.
+- Se registra la operación en el historial del cliente.
+
+---
+
+## Requisitos Asociados
+- Registro de clientes
+- Inicio de sesión cliente / administrador
+- Ver disponibilidad de calendario
+- Módulo de canchas
+- Registrar abonos y saldos pendientes
+- Procesar pagos
+- Generación de comprobantes
+- Notificaciones y recordatorios
+- Historial de clientes
+- Confirmación automática de reservas
+
+# CU06: Confirmación Automática de Reservas
+
+## Nombre
+Confirmación Automática de Reservas
+
+## Actores
+- Sistema
+- Cliente
+- Administrador
+
+---
+
+## Descripción
+El sistema confirma automáticamente una reserva cuando el usuario selecciona una cancha, fecha, hora y duración, y cumple con los requisitos establecidos (pago válido, disponibilidad y datos correctos). Una vez confirmada, el sistema envía la notificación correspondiente.
+
+---
+
+## Precondiciones
+- El cliente debe estar registrado (si no, debe registrarse durante el proceso).
+- Debe existir disponibilidad de cancha en la fecha y hora seleccionada.
+- Debe existir un método de pago activo si se requiere abono o pago total.
+- El sistema de pagos y notificaciones debe estar operativo.
+
+---
+
+## Flujo Normal
+
+1. El cliente selecciona cancha, fecha, hora y duración.
+2. El sistema verifica la disponibilidad en tiempo real.
+3. El cliente realiza el pago (total o abono).
+4. El sistema valida que el pago sea correcto.
+5. El sistema genera la reserva en la base de datos.
+6. El sistema cambia el estado de la reserva a **“Confirmada”**.
+7. El sistema genera un código único o QR de la reserva.
+8. El sistema envía automáticamente una notificación al cliente con:
+   - Datos de la reserva
+   - Código o QR
+   - Instrucciones adicionales (hora de llegada, políticas, cancelaciones)
+9. Antes de la hora programada, el sistema envía un recordatorio para reducir ausencias.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Pago Rechazado
+- Si el pago es rechazado:
+  - El sistema notifica que no puede confirmar la reserva.
+  - Se solicita un nuevo método de pago.
+
+### 🔹 Horario Ocupado al Momento del Pago
+- Si el horario se ocupa durante el proceso:
+  - El sistema bloquea la confirmación.
+  - El cliente debe seleccionar un nuevo horario disponible.
+
+### 🔹 Datos del Cliente Incompletos
+- Si faltan datos obligatorios:
+  - El sistema solicita completar la información antes de confirmar.
+
+---
+
+## Postcondiciones
+- La reserva queda registrada y confirmada en la base de datos.
+- La disponibilidad del horario se actualiza automáticamente.
+- Se envía notificación al cliente con los detalles.
+- Se registra la operación en el historial del cliente.
+- Se programa el envío automático de recordatorio previo a la reserva.
+
+---
+
+## Requisitos Asociados
+- Confirmación automática de reservas
+- Crear reservas
+- Procesar pagos
+- Enviar notificaciones
+- Registro de clientes
+- Ver disponibilidad del calendario
+
+# CU07: Cancelar Reservas
+
+## Nombre
+Cancelar Reservas
+
+## Actores
+- Cliente
+- Administrador
+
+---
+
+## Descripción
+Permite al cliente o al administrador cancelar una reserva existente.  
+El sistema verifica las políticas de cancelación, actualiza el estado de la reserva, libera la disponibilidad de la cancha y envía las notificaciones correspondientes.
+
+---
+
+## Precondiciones
+- El usuario debe estar registrado.
+- El usuario debe haber iniciado sesión.
+- La reserva debe existir en el sistema.
+- La reserva no debe estar previamente cancelada o finalizada.
+
+---
+
+## Flujo Normal
+
+1. El usuario inicia sesión en el sistema.
+2. Selecciona el módulo **Gestión de Reservas**.
+3. Elige la reserva que desea cancelar.
+4. El sistema muestra las políticas de cancelación:
+   - Plazos permitidos
+   - Penalizaciones
+   - Condiciones de devolución
+5. El usuario confirma la cancelación.
+6. El sistema verifica si la reserva cumple con las políticas establecidas.
+7. El sistema cambia el estado de la reserva a **“Cancelada”**.
+8. El sistema libera el horario correspondiente en el calendario.
+9. Si aplica, el sistema:
+   - Registra devolución del pago
+   - O actualiza saldo pendiente
+10. El sistema envía notificación de cancelación al cliente.
+11. El sistema registra la acción en el historial del cliente.
+
+---
+
+## Flujos Alternos
+
+### 🔹 No Cumple Políticas de Cancelación
+- Si la reserva no cumple con los plazos establecidos:
+  - El sistema informa que no es posible cancelar sin penalización.
+  - Puede aplicar cargo parcial o no permitir la cancelación.
+
+### 🔹 Error en la Devolución o Abono
+- Si ocurre un error en el proceso de devolución:
+  - El sistema registra el incidente.
+  - Notifica al administrador para revisión manual.
+
+---
+
+## Postcondiciones
+- La reserva cambia su estado a **“Cancelada”**.
+- El horario queda disponible nuevamente en el calendario.
+- Se registra la operación en el historial.
+- Se actualizan saldos o devoluciones si corresponde.
+
+---
+
+## Requisitos Asociados
+- Cancelación de reservas
+- Inicio de sesión cliente
+- Inicio de sesión administrador
+- Ver disponibilidad de calendario
+- Historial de clientes
+- Registrar abonos y saldos pendientes
+- Notificaciones y recordatorios
+- Módulo de canchas
+
+# CU08: Procesar Pagos
+
+## Nombre
+Procesar Pagos
+
+## Actores
+- Cliente
+- Administrador
+
+---
+
+## Descripción
+Permite registrar y procesar pagos asociados a reservas, abonos o servicios adicionales.  
+El sistema valida el método de pago, registra la transacción, actualiza saldos pendientes y genera comprobantes de pago.  
+Además, envía notificaciones al cliente y actualiza el historial de transacciones.
+
+---
+
+## Precondiciones
+- El usuario debe haber iniciado sesión.
+- Debe existir una reserva o servicio asociado al pago.
+- El método de pago debe estar disponible (efectivo, transferencia, tarjeta, aplicación).
+- El monto ingresado debe coincidir con el valor total o saldo pendiente.
+
+---
+
+## Flujo Normal
+
+1. El usuario inicia sesión en el sistema.
+2. Ingresa al módulo **Pagos** o **Mis Reservas**.
+3. Selecciona la reserva o servicio que desea pagar.
+4. El sistema muestra:
+   - Valor total
+   - Saldos pendientes
+   - Opciones de abono o pago completo
+5. El usuario elige el método de pago.
+6. El usuario confirma el monto a pagar.
+7. El sistema procesa el pago (validación, registro y confirmación).
+8. El sistema actualiza:
+   - Saldos pendientes
+   - Estado de la reserva (si aplica)
+9. Se genera automáticamente el comprobante de pago.
+10. El sistema envía una notificación al cliente con los detalles.
+11. La transacción queda registrada para control y reportes administrativos.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Pago Rechazado
+- Si el método de pago falla:
+  - El sistema notifica el rechazo.
+  - Permite seleccionar otro método de pago.
+
+### 🔹 Monto Ingresado Incorrecto
+- Si el monto no coincide con el saldo:
+  - El sistema muestra mensaje de error.
+  - Solicita corregir el valor.
+
+### 🔹 Error al Generar Comprobante
+- Si ocurre un error en la generación del comprobante:
+  - El sistema registra el incidente.
+  - Notifica al administrador.
+  - Permite reintentar la generación.
+
+---
+
+## Postcondiciones
+- El pago queda registrado en el sistema.
+- Se actualizan saldos, abonos o estado de la reserva.
+- Se genera automáticamente un comprobante.
+- El cliente recibe una notificación con la confirmación del pago.
+- La transacción queda almacenada para reportes administrativos.
+
+---
+
+## Requisitos Asociados
+- Procesar pagos
+- Generación de comprobantes
+- Notificaciones y recordatorios
+- Registrar abonos y saldos pendientes
+- Inicio de sesión cliente
+- Inicio de sesión administrador
+- Reportes administrativos
+- Historial de clientes
+
+# CU09: Generar Comprobantes
+
+## Nombre
+Generar Comprobantes
+
+## Actores
+- Sistema  
+- Cliente  
+- Administrador
+
+---
+
+## Descripción
+Permite que el sistema genere automáticamente un comprobante cada vez que se registra una reserva, un pago o una acción que requiera soporte formal.  
+El comprobante contiene información clave como datos del cliente, cancha, fecha y hora, duración, estado de pago y un código único.
+
+---
+
+## Precondiciones
+- Debe existir una reserva o una transacción registrada.  
+- Los datos de la reserva deben estar completos.
+
+---
+
+## Flujo Normal
+
+1. El sistema detecta que se ha registrado una reserva o un pago.  
+2. El sistema reúne la información necesaria:  
+   - Datos del cliente  
+   - Datos de la cancha (fecha, hora, duración, estado de pago)  
+3. El sistema genera un código único (ID o QR).  
+4. El sistema crea el comprobante digital con todos los datos.  
+5. El sistema guarda el comprobante en la base de datos.  
+6. El sistema envía el comprobante al cliente por correo, SMS, WhatsApp o aplicación.  
+7. El administrador puede visualizarlo, descargarlo o imprimirlo.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Falta de Información
+- Si faltan datos necesarios para el comprobante:  
+  - El sistema notifica el error.  
+  - Solicita completar los datos antes de generar el comprobante.
+
+### 🔹 Error al Enviar Comprobante
+- Si ocurre un fallo al enviar el comprobante al cliente:  
+  - El sistema registra el error.  
+  - Permite reintentar el envío por los distintos canales disponibles.
+
+### 🔹 Error al Generar Código Único
+- Si ocurre un error al crear el ID o QR:  
+  - El sistema registra el incidente.  
+  - Notifica al administrador para corrección.
+
+---
+
+## Postcondiciones
+- Se crea un comprobante único asociado a la reserva o al pago.  
+- El comprobante se envía al cliente.  
+- El comprobante queda guardado en el sistema para consultas y reportes.
+
+---
+
+## Requisitos Asociados
+- Generación de comprobantes  
+- Crear nuevas reservas  
+- Procesar pagos  
+- Notificaciones y recordatorios  
+- Historial de clientes  
+- Reportes administrativos  
+- Módulo de canchas  
+- Inicio de sesión cliente  
+- Inicio de sesión administrador
+
+# CU10: Registrar Eventos
+
+## Nombre
+Registrar Eventos
+
+## Actores
+- Administrador  
+- Cliente  
+- Recepción
+
+---
+
+## Descripción
+Permite al administrador o personal autorizado crear y registrar eventos dentro del sistema, como torneos, partidos especiales o actividades recreativas.
+
+---
+
+## Precondiciones
+- El usuario debe haber iniciado sesión con un rol autorizado.  
+- Debe existir disponibilidad en la cancha para la fecha y hora seleccionadas.  
+- La información mínima del evento debe estar definida: tipo, fecha, hora.
+
+---
+
+## Flujo Normal
+
+1. El administrador inicia sesión en el sistema.  
+2. Accede al módulo **Eventos**.  
+3. Selecciona la opción **Registrar nuevo evento**.  
+4. Ingresa la información del evento:  
+   - Tipo de evento  
+   - Fecha y hora  
+   - Duración  
+   - Cancha asignada  
+   - Descripción  
+   - Cupo máximo  
+   - Reglas y condiciones del evento  
+5. El sistema valida disponibilidad de la cancha.  
+6. El administrador asigna responsables (personal o administrador).  
+7. El sistema registra el evento.  
+8. El evento se publica automáticamente en el calendario y en la sección de actividades.  
+9. El sistema envía notificaciones a clientes interesados o inscritos.  
+10. El sistema habilita seguimiento: inscripciones, pagos y control del evento.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Cancha No Disponible
+- Si la cancha seleccionada no está disponible:  
+  - El sistema notifica la falta de disponibilidad.  
+  - Permite
+
+
+# CU11: Organizar Torneo
+
+## Nombre
+Organizar Torneo
+
+## Actores
+- Administrador  
+- Recepcionista  
+- Equipos/Jugadores
+
+---
+
+## Descripción
+Permite al administrador crear y organizar torneos deportivos dentro del sistema.  
+Incluye definir el tipo de torneo, sus reglas, fechas, equipos participantes, asignación de canchas, programación de partidos, control de resultados y envío de notificaciones.
+
+---
+
+## Precondiciones
+- El administrador debe estar autenticado.  
+- Deben existir canchas registradas y disponibles.
+
+---
+
+## Flujo Normal
+
+1. El administrador ingresa al módulo **Torneos**.  
+2. El sistema muestra opciones: crear torneo, gestionar torneos, resultados, reportes.  
+3. El administrador selecciona **Crear Torneo**.  
+4. Ingresa los datos del torneo:  
+   - Tipo (amistoso, eliminatoria, liga)  
+   - Fecha de inicio y fin  
+   - Reglas del torneo  
+   - Categorías y cupos  
+5. El sistema valida la información.  
+6. El administrador registra equipos o jugadores participantes.  
+7. El sistema asigna o valida los cupos disponibles.  
+8. El administrador programa los partidos:  
+   - Asigna horarios  
+   - Selecciona canchas disponibles  
+9. El sistema verifica que no existan choques de horario con reservas normales.  
+10. El sistema genera el calendario del torneo.  
+11. El sistema envía notificaciones a equipos/jugadores.  
+12. El torneo queda activo y visible en el sistema.
+
+---
+
+## Flujos Alternos
+
+### 🔹 No hay Equipos Registrados
+- Si no se han registrado equipos o jugadores:  
+  - El sistema notifica la falta de participantes.  
+  - Impide continuar hasta registrar los equipos.
+
+### 🔹 Datos Inválidos
+- Si se ingresan datos inválidos del torneo:  
+  - El sistema muestra mensaje de error.  
+  - Solicita corregir los datos antes de continuar.
+
+---
+
+## Postcondiciones
+- El torneo queda almacenado y disponible para gestión.  
+- Los partidos quedan agendados sin conflictos de horario.  
+- Los equipos/jugadores inscritos quedan asociados al torneo.  
+- Se generan notificaciones iniciales del evento.
+
+---
+
+## Requisitos Asociados
+- Organizar torneos o campeonatos  
+- Módulo de canchas  
+- Registrar eventos  
+- Notificaciones y recordatorios  
+- Ver disponibilidad de calendario  
+- Reportes administrativos  
+- Generar reportes personalizados  
+- Generar reportes de asistencia a eventos  
+- Inicio de sesión administrador  
+- Registro de clientes  
+- Registrar comentarios / Filtrar comentarios por fecha o puntaje  
+- Estadísticas de uso
+
+# CU12: Enviar Notificaciones
+
+## Nombre
+Enviar Notificaciones
+
+## Actores
+- Sistema  
+- Administrador  
+- Cliente
+
+---
+
+## Descripción
+El sistema envía notificaciones automáticas por correo, SMS o notificación push cuando ocurre una acción que requiere informar al cliente o al personal, como: creación de reserva, cancelación, recordatorio o modificación de evento.
+
+---
+
+## Precondiciones
+- Debe existir un evento que active la notificación.
+
+---
+
+## Flujo Normal
+
+1. Ocurre una acción en el sistema que requiere notificación:  
+   - Creación de reserva  
+   - Cancelación  
+   - Recordatorio  
+   - Actualización de evento  
+2. El sistema identifica el tipo de notificación y el destinatario.  
+3. El sistema genera el mensaje con los datos:  
+   - Fecha, hora, cancha, código, estado y observaciones  
+4. El sistema selecciona el canal disponible:  
+   - Correo electrónico, SMS o notificación push  
+5. El sistema envía automáticamente la notificación.  
+6. El sistema registra el envío en el historial.  
+7. El cliente, administrador o personal recibe la notificación.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Datos Incompletos del Destinatario
+- Si faltan datos del destinatario:  
+  - El sistema muestra un mensaje de error.  
+  - Impide enviar la notificación hasta completar los datos necesarios.
+
+---
+
+## Postcondiciones
+- El cliente o personal recibe la notificación correspondiente.  
+- Se actualiza el estado del proceso relacionado.
+
+---
+
+## Requisitos Asociados
+- Notificaciones y recordatorios  
+- Módulo de comunicación  
+- Registro de clientes  
+- Confirmación automática de reservas  
+- Cancelación de reservas  
+- Registrar eventos  
+- Crear nuevas reservas  
+- Inicio de sesión cliente / administrador  
+- Historial de clientes  
+- Reportes administrativos
+
+# CU13: Gestionar Mantenimiento
+
+## Nombre
+Gestionar Mantenimiento
+
+## Actores
+- Administrador  
+- Personal de mantenimiento  
+- Cliente  
+- Sistema
+
+---
+
+## Descripción
+Permite programar, registrar y controlar los mantenimientos de las canchas o instalaciones.  
+El administrador define el tipo de mantenimiento, su frecuencia, los responsables y las tareas.  
+El sistema programa la actividad, bloquea horarios, envía notificaciones y almacena un historial del mantenimiento realizado.
+
+---
+
+## Precondiciones
+- El administrador debe estar autenticado.  
+- Debe existir un registro de canchas.  
+- El personal de mantenimiento debe estar registrado como usuario del sistema.
+
+---
+
+## Flujo Normal
+
+1. El administrador inicia sesión y accede al módulo de **Mantenimiento**.  
+2. Selecciona la opción **Programar nuevo mantenimiento**.  
+3. Define el tipo de mantenimiento:  
+   - Limpieza profunda  
+   - Revisión de iluminación  
+   - Reparación de superficie  
+   - Mantenimiento de equipos  
+   - Establece la frecuencia: diario, semanal, mensual  
+4. Asigna al responsable (personal de mantenimiento).  
+5. Registra en el sistema:  
+   - Fecha y hora programada  
+   - Tareas específicas  
+   - Área o cancha afectada  
+6. El sistema bloquea automáticamente la cancha si es necesario.  
+7. El sistema envía notificaciones al personal encargado.  
+8. El sistema notifica a los clientes si la cancha queda fuera de servicio.  
+9. El personal realiza el mantenimiento y marca las tareas como completadas.  
+10. El sistema registra observaciones y resultados en el historial.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Horarios ya Ocupados
+- Si la cancha ya está ocupada en el horario seleccionado:  
+  - El sistema notifica el conflicto.  
+  - Permite reprogramar el mantenimiento.
+
+### 🔹 Personal No Disponible
+- Si el personal asignado no está disponible:  
+  - El sistema notifica la indisponibilidad.  
+  - Permite reasignar otro responsable.
+
+---
+
+## Postcondiciones
+- La cancha queda marcada como “en mantenimiento” o “disponible”.  
+- Se registra un historial del mantenimiento realizado.  
+- El sistema notifica a clientes y personal si es necesario.  
+- Se actualiza el calendario y se bloquean horarios si corresponde.
+
+---
+
+## Requisitos Asociados
+- Programar mantenimientos periódicos  
+- Módulo de canchas  
+- Notificaciones y recordatorios  
+- Módulo de comunicación  
+- Roles de usuario  
+- Ver disponibilidad de calendario  
+- Historial de clientes  
+- Reportes administrativos  
+- Estadísticas de uso  
+- Crear nuevas reservas  
+- Cancelación de reservas
+
+
+# CU14: Administrar Promociones
+
+## Nombre
+Administrar Promociones
+
+## Actores
+- Administrador  
+- Cliente  
+- Recepcionista  
+- Sistema
+
+---
+
+## Descripción
+Permite al administrador crear, gestionar y controlar promociones o descuentos para aumentar reservas, fidelizar clientes o incentivar ciertos horarios.  
+Las promociones pueden incluir: descuentos por horario, paquetes, 2x1, descuentos por cliente frecuente, etc.  
+El sistema valida reglas, límites, vigencia, disponibilidad y aplica los descuentos automáticamente al generar una reserva.
+
+---
+
+## Precondiciones
+- El administrador debe estar autenticado.  
+- Debe existir el módulo activo de promociones.  
+- Las canchas deben estar registradas en el sistema.
+
+---
+
+## Flujo Normal
+
+1. El administrador inicia sesión y accede al módulo **Promociones y Descuentos**.  
+2. Selecciona la opción **Crear nueva promoción**.  
+3. Define el tipo de promoción:  
+   - Descuento por horario  
+   - Porcentaje  
+   - Monto fijo  
+   - Combos o paquetes  
+4. Configura las reglas:  
+   - Fecha de inicio y fin  
+   - Horarios aplicables  
+   - Canchas incluidas  
+   - Tipo de descuento  
+   - Clientes aplicables (frecuente, nuevos, general)  
+5. Establece límites de uso (por cliente o cantidad total).  
+6. Indica si puede combinarse con otras promociones.  
+7. Guarda la promoción en el sistema.  
+8. El sistema la activa y queda disponible para reservas.  
+9. El cliente ve el descuento aplicado automáticamente al crear una reserva.  
+10. El sistema registra los usos para reportes administrativos.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Promoción Fuera de Vigencia
+- Si la promoción no está activa:  
+  - El sistema notifica que no se puede aplicar.  
+  - Impide usar la promoción hasta su vigencia.
+
+### 🔹 Cancha o Horario No Disponible
+- Si la promoción se aplica a una cancha u horario ocupado:  
+  - El sistema notifica el conflicto.  
+  - Permite seleccionar otra opción disponible.
+
+### 🔹 Límite de Uso Excedido
+- Si se exceden los límites de la promoción:  
+  - El sistema impide aplicarla.  
+  - Notifica al administrador o cliente.
+
+### 🔹 Combinación Inválida
+- Si la promoción no puede combinarse con otra:  
+  - El sistema aplica solo la válida según reglas.  
+  - Notifica al usuario sobre la limitación.
+
+---
+
+## Postcondiciones
+- La promoción queda registrada, actualizada o eliminada en el sistema.  
+- Las reglas de descuento se aplican automáticamente al crear reservas.  
+- Se actualiza la información de vigencias y límites de uso.  
+- El sistema puede generar reportes posteriores de uso de promociones.
+
+---
+
+## Requisitos Asociados
+- Administrar promociones y descuentos  
+- Roles de usuario  
+- Módulo de canchas  
+- Crear nuevas reservas  
+- Notificaciones y recordatorios  
+- Módulo de comunicación  
+- Reportes administrativos  
+- Estadísticas de uso
+
+# CU15: Registrar Comentarios
+
+## Nombre
+Registrar Comentarios
+
+## Actores
+- Cliente  
+- Administrador  
+- Sistema
+
+---
+
+## Descripción
+Permite a los clientes registrar comentarios sobre el servicio, la cancha, la atención o una reserva específica.  
+El usuario puede ingresar un texto y una calificación (por ejemplo, estrellas).  
+El sistema almacena el comentario en la base de datos y lo asocia a la cancha, a la reserva o al usuario que lo generó.  
+El administrador puede revisarlos posteriormente para control, calidad del servicio y reportes.
+
+---
+
+## Precondiciones
+- El cliente debe tener una cuenta registrada.  
+- El cliente debe haber iniciado sesión.  
+- Debe existir una reserva previa o un servicio sobre el cual comentar.
+
+---
+
+## Flujo Normal
+
+1. El cliente inicia sesión en el sistema.  
+2. Ingresa al módulo **Comentarios** desde su perfil.  
+3. Selecciona sobre qué desea comentar:  
+   - Reserva  
+   - Cancha  
+   - Servicio general  
+4. Escribe el comentario en el cuadro de texto.  
+5. Selecciona una calificación: estrellas o puntaje.  
+6. Confirma y guarda el comentario.  
+7. El sistema verifica los campos y registra el comentario en la base de datos.  
+8. El sistema asocia el comentario al usuario, reserva o cancha.  
+9. El administrador y el personal pueden visualizarlo en el módulo administrativo.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Comentario Vacío
+- Si el cliente no ingresa texto:  
+  - El sistema muestra un mensaje de error.  
+  - Solicita completar el comentario antes de guardar.
+
+### 🔹 Reserva No Encontrada
+- Si no existe la reserva o servicio asociado:  
+  - El sistema notifica el error.  
+  - Impide registrar el comentario hasta que se seleccione un elemento válido.
+
+---
+
+## Postcondiciones
+- El comentario queda almacenado en la base de datos.  
+- Se asocia a la reserva, cancha o usuario correspondiente.  
+- El administrador puede visualizarlo para seguimiento o reportes.
+
+---
+
+## Requisitos Asociados
+- Registrar comentarios  
+- Inicio de sesión cliente  
+- Ver disponibilidad / historial de clientes  
+
+# CU16: Filtrar Comentarios
+
+## Nombre
+Filtrar Comentarios
+
+## Actores
+- Cliente  
+- Administrador  
+- Sistema
+
+---
+
+## Descripción
+Permite al usuario aplicar filtros para visualizar únicamente los comentarios que cumplen criterios específicos como tipo de servicio, puntaje o fecha.  
+El sistema consulta la base de datos y muestra los resultados filtrados según la selección del usuario.
+
+---
+
+## Precondiciones
+- El usuario debe haber ingresado a la plataforma.  
+- Debe existir al menos un comentario registrado en el sistema.  
+- Los servicios (torneo, alquiler de cancha, eventos) deben estar previamente registrados.
+
+---
+
+## Flujo Normal
+
+1. El usuario ingresa a la plataforma.  
+2. En el menú principal selecciona la opción **Filtrar comentarios**.  
+3. El sistema despliega las opciones de filtro:  
+   - Tipo de servicio  
+   - Puntaje  
+   - Fecha  
+4. El usuario selecciona un tipo de filtro.  
+5. El sistema muestra la lista de servicios disponibles:  
+   - Torneo  
+   - Alquiler de cancha  
+   - Evento  
+6. El usuario elige uno o varios servicios.  
+7. El sistema consulta la base de datos.  
+8. El sistema muestra únicamente los comentarios asociados al servicio seleccionado.
+
+---
+
+## Flujos Alternos
+
+### 🔹 No Existen Comentarios por Filtro
+- Si no hay comentarios que cumplan los criterios seleccionados:  
+  - El sistema notifica que no se encontraron resultados.  
+  - Permite al usuario modificar los filtros o consultar todos los comentarios.
+
+---
+
+## Postcondiciones
+- Se muestra una lista de comentarios filtrados según los criterios seleccionados.  
+- El sistema mantiene registro de los filtros aplicados durante la sesión.  
+- No se modifica ningún comentario; solo se consulta la información.
+
+---
+
+## Requisitos Asociados
+- Filtrar comentarios  
+- Filtrar comentarios por tipo de servicio  
+- Filtrar comentarios por puntaje  
+- Filtrar comentarios por fecha  
+- Registro de clientes  
+- Registrar eventos  
+- Organizar torneos o campeonatos  
+- Módulo de canchas
+
+# CU17: Generar Reportes
+
+## Nombre
+Generar Reportes
+
+## Actores
+- Administrador  
+- Recepción
+
+---
+
+## Descripción
+Permite que el administrador o la recepcionista generen reportes detallados sobre la asistencia de los usuarios a los eventos registrados.  
+El sistema utiliza filtros como evento, fecha y estado de asistencia para mostrar un reporte.
+
+---
+
+## Precondiciones
+- El usuario debe estar registrado en el sistema.  
+- El usuario debe iniciar sesión y tener permisos para acceder al módulo de reportes.  
+- Deben existir eventos y registros de asistencia previamente almacenados.
+
+---
+
+## Flujo Normal
+
+1. El administrador o la recepcionista ingresa al sistema.  
+2. El usuario inicia sesión con sus credenciales.  
+3. El sistema valida usuario, contraseña y permisos.  
+4. El sistema habilita el acceso al módulo de reportes.  
+5. Desde el menú principal, el usuario selecciona **Reportes de asistencia a eventos**.  
+6. El sistema muestra un formulario de filtros:  
+   - Evento  
+   - Fecha  
+   - Estado de asistencia  
+7. El usuario selecciona los criterios deseados.  
+8. El usuario presiona **Generar reporte**.  
+9. El sistema consulta la base de datos y procesa la información.  
+10. El sistema muestra un reporte con:  
+    - Nombre del evento  
+    - Lista de asistentes  
+    - Hora de ingreso y salida  
+    - Estado de asistencia (asistió, no asistió, retraso)  
+    - Responsable del registro  
+11. El sistema ofrece opciones para exportar en Excel o PDF.  
+12. El usuario descarga el archivo si lo desea.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Usuario sin Permisos
+- Si el usuario no tiene permisos para generar reportes:  
+  - El sistema muestra un mensaje de error.  
+  - Impide el acceso al módulo de reportes.
+
+### 🔹 No Existen Registros según los Filtros
+- Si no hay registros que cumplan los criterios seleccionados:  
+  - El sistema notifica que no se encontraron resultados.  
+  - Permite modificar los filtros para intentar nuevamente.
+
+---
+
+## Postcondiciones
+- El reporte queda generado y visible en pantalla.  
+- El usuario puede descargar el reporte en Excel o PDF.  
+- El sistema registra internamente la acción.
+
+---
+
+## Requisitos Asociados
+- Generar reportes de asistencia a eventos  
+- Generar reportes personalizados  
+- Reportes administrativos  
+- Roles de usuario  
+- Registrar hora de ingreso y salida de los usuarios  
+- Registrar eventos
+
+# CU18: Registrar Proveedores
+
+## Nombre
+Registrar Proveedores
+
+## Actores
+- Administrador  
+- Sistema
+
+---
+
+## Descripción
+Permite al administrador o personal autorizado registrar nuevos proveedores en el sistema, almacenar sus datos de contacto y tipo de servicio, y mantener un control actualizado de sus relaciones comerciales con el centro deportivo.
+
+---
+
+## Precondiciones
+- El usuario debe tener inicio de sesión con permisos para gestionar proveedores.  
+- El sistema debe estar en funcionamiento.  
+- El proveedor no debe estar previamente registrado para evitar duplicados.
+
+---
+
+## Flujo Normal
+
+1. El usuario accede al módulo de **Gestión de Proveedores**.  
+2. Selecciona la opción **Registrar nuevo proveedor**.  
+3. Ingresa los datos del proveedor:  
+   - Nombre  
+   - Dirección  
+   - Contacto  
+   - Tipo de servicio  
+   - Correo  
+   - Condiciones  
+4. El sistema valida que los datos estén completos y que no exista un registro duplicado.  
+5. El actor revisa y confirma la información.  
+6. El sistema guarda el proveedor en la base de datos.  
+7. El sistema muestra un mensaje de registro exitoso.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Datos Incompletos
+- Si faltan datos obligatorios del proveedor:  
+  - El sistema muestra un mensaje de error.  
+  - Solicita completar los datos antes de guardar.
+
+### 🔹 Proveedor Duplicado
+- Si el proveedor ya existe en el sistema:  
+  - El sistema notifica la duplicidad.  
+  - Impide registrar el proveedor hasta que se verifique la información.
+
+---
+
+## Postcondiciones
+- El proveedor queda registrado en la base de datos.  
+- Los datos pueden ser consultados, modificados o eliminados posteriormente.  
+- Se actualiza el historial de proveedores para futuras transacciones.
+
+---
+
+## Requisitos Asociados
+- Registro de proveedores  
+- Roles de usuario  
+- Inicio de sesión administrador
+
+
+# CU19: Gestión de Insumos Deportivos
+
+## Nombre
+Gestión de Insumos Deportivos
+
+## Actores
+- Cliente  
+- Administrador  
+- Sistema
+
+---
+
+## Descripción
+Permite al administrador gestionar el inventario de insumos deportivos del centro deportivo.  
+El sistema permite registrar entradas cuando se reciben insumos y salidas cuando se entregan para uso en eventos, reservas o cuando se reporta pérdida o desgaste.
+
+---
+
+## Precondiciones
+- El administrador debe haber iniciado sesión.  
+- Debe tener permisos según los Roles de Usuario.  
+- El módulo de inventario debe estar disponible.  
+- Los insumos deben estar creados previamente o existir la opción de crearlos.
+
+---
+
+## Flujo Normal
+
+1. El administrador inicia sesión con sus credenciales.  
+2. El sistema valida usuario, contraseña y permisos.  
+3. Se habilita el acceso al módulo de inventario.  
+4. El administrador ingresa a **Insumos Deportivos** desde el menú.  
+5. El sistema muestra la lista de insumos:  
+   - Nombre  
+   - Categoría  
+   - Stock  
+   - Estado  
+   - Ubicación  
+6. El administrador selecciona si desea registrar una **entrada** o **salida**.
+
+### Registrar Entrada
+7. Selecciona un insumo existente o crea uno nuevo.  
+8. Ingresa la cantidad recibida.  
+9. Registra información adicional: fecha, proveedor, observaciones.  
+10. Confirma la entrada.  
+11. El sistema actualiza automáticamente el stock sumando la cantidad registrada.
+
+### Registrar Salida
+12. Selecciona el insumo correspondiente.  
+13. Ingresa la cantidad que se entregará o utilizará.  
+14. Agrega datos complementarios: responsable, motivo, fecha.  
+15. Confirma la salida.  
+16. El sistema descuenta la cantidad del stock.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Cantidad Insuficiente para Salida
+- Si la cantidad solicitada excede el stock disponible:  
+  - El sistema notifica la insuficiencia.  
+  - Impide completar la salida hasta ajustar la cantidad.
+
+### 🔹 Datos Incompletos
+- Si faltan datos obligatorios para entrada o salida:  
+  - El sistema muestra un mensaje de error.  
+  - Solicita completar los campos antes de guardar.
+
+### 🔹 Fallo al Guardar
+- Si ocurre un error al registrar la entrada o salida:  
+  - El sistema notifica el fallo.  
+  - Permite reintentar el registro.
+
+---
+
+## Postcondiciones
+- Se actualiza el inventario con la entrada o salida registrada.  
+- Se almacena un registro histórico de movimientos del insumo.  
+- El sistema actualiza la cantidad y estado del insumo en tiempo real.  
+- El registro queda disponible para reportes o auditoría.
+
+---
+
+## Requisitos Asociados
+- Registrar entradas y salidas de insumos deportivos  
+- Roles de usuario  
+- Inicio de sesión administrador
+
+# CU20: Comunicación Directa
+
+## Nombre
+Comunicación Directa
+
+## Actores
+- Administrador  
+- Cliente
+
+---
+
+## Descripción
+Permite que cualquier usuario autorizado pueda comunicarse directamente con el administrador por medio de un canal de mensajería interna.  
+Facilita la resolución de dudas, problemas, solicitudes o reportes relacionados con el servicio y permite el intercambio de mensajes en tiempo real o diferido, además de adjuntar documentos e imágenes.
+
+---
+
+## Precondiciones
+- El usuario debe tener una cuenta registrada.  
+- El usuario debe haber iniciado sesión.  
+- El sistema debe tener el módulo de comunicación directa habilitado.
+
+---
+
+## Flujo Normal
+
+1. El usuario ingresa al sistema con sus credenciales.  
+2. Desde el menú principal selecciona el módulo **Comunicación Directa**.  
+3. El sistema muestra la bandeja de mensajes o la opción para crear uno nuevo.  
+4. El usuario redacta su mensaje describiendo la consulta, solicitud o reporte.  
+5. El usuario adjunta archivos, imágenes o evidencias si es necesario.  
+6. El usuario envía el mensaje.  
+7. El sistema registra el mensaje y genera una notificación para el administrador.  
+8. El administrador abre su panel y revisa el mensaje recibido.  
+9. El administrador responde directamente.  
+10. El usuario recibe la respuesta y puede continuar la conversación hasta resolver su inquietud.
+
+---
+
+## Flujos Alternos
+
+### 🔹 Archivo Adjunto No Permitido
+- Si el archivo adjunto no cumple con los formatos o tamaño permitidos:  
+  - El sistema notifica la restricción.  
+  - Permite al usuario adjuntar otro archivo válido.
+
+### 🔹 Administrador No Disponible
+- Si el administrador no está disponible:  
+  - El sistema mantiene el mensaje en la bandeja de entrada.  
+  - Notifica al usuario que la respuesta se enviará cuando el administrador esté disponible.
+
+---
+
+## Postcondiciones
+- El mensaje queda registrado en el sistema con fecha, hora y autor.  
+- El administrador recibe una notificación de nuevo mensaje.  
+- Se mantiene un historial de conversación entre usuario y administrador.
+
+---
+
+## Requisitos Asociados
+- Roles de usuario  
+- Gestión de comunicación directa entre usuario y administrador  
+- Gestión de notificaciones

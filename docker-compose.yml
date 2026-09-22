@@ -1,0 +1,52 @@
+# Que: Configuracion de Docker Compose para servicios de desarrollo
+# Para que: Levantar PostgreSQL 17 con un solo comando para CANCHA SINTETICA
+# Impacto: Sin este archivo no podemos iniciar la base de datos del proyecto
+
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: cancha_sintetica_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cancha_user
+      POSTGRES_PASSWORD: cancha_password
+      POSTGRES_DB: cancha_sintetica_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - cancha_sintetica_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U cancha_user -d cancha_sintetica_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  be:
+    build: ./be
+    container_name: cancha_be
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    env_file:
+      - ./be/.env
+    environment:
+      DATABASE_URL: postgresql://cancha_user:cancha_password@db:5432/cancha_sintetica_db
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8001"
+
+  fe:
+    build: ./fe
+    container_name: cancha_fe
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_PROXY_TARGET: http://be:8001
+      VITE_API_URL: http://localhost:8001
+    depends_on:
+      - be
+
+volumes:
+  cancha_sintetica_data:

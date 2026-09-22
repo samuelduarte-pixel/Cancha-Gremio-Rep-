@@ -1,0 +1,234 @@
+/* =============================================
+   CANCHA GREMIO — Design System
+   Estética: Deportiva Nocturna / Neón Verde
+   ============================================= */
+
+:root {
+  /* Colors */
+  --clr-bg:        #080c0a;
+  --clr-bg-card:   #0d1410;
+  --clr-bg-glass:  rgba(20, 35, 25, 0.6);
+  --clr-surface:   #111a13;
+  --clr-border:    rgba(74, 222, 128, 0.12);
+  --clr-border-md: rgba(74, 222, 128, 0.25);
+
+  --clr-neon:      #4ade80;
+  --clr-neon-dim:  #22c55e;
+  --clr-neon-glow: rgba(74, 222, 128, 0.35);
+  --clr-accent:    #a3e635;
+  --clr-warn:      #fb923c;
+  --clr-danger:    #f87171;
+  --clr-info:      #38bdf8;
+
+  --clr-text:      #e8f5ec;
+  --clr-text-muted:#7fa889;
+  --clr-text-dim:  #4a6b54;
+
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Spacing */
+  --gap-xs:  4px;
+  --gap-sm:  8px;
+  --gap-md:  16px;
+  --gap-lg:  24px;
+  --gap-xl:  40px;
+  --gap-2xl: 64px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Shadows */
+  --shadow-neon: 0 0 20px rgba(74, 222, 128, 0.3), 0 0 60px rgba(74, 222, 128, 0.1);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.5);
+
+  /* Sidebar */
+  --sidebar-w: 240px;
+  --topbar-h:  64px;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--clr-bg); }
+::-webkit-scrollbar-thumb { background: var(--clr-border-md); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--clr-neon-dim); }
+
+/* Selection */
+::selection { background: var(--clr-neon-glow); color: var(--clr-neon); }
+
+/* Links */
+a { color: inherit; text-decoration: none; }
+
+/* Buttons */
+button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+
+/* Utility classes */
+.neon-text { color: var(--clr-neon); }
+.muted { color: var(--clr-text-muted); }
+.mono { font-family: var(--font-mono); }
+
+/* Required field asterisk */
+.req::after {
+  content: " *";
+  color: var(--clr-danger);
+}
+
+.glass {
+  background: var(--clr-bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--clr-border);
+}
+
+.card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--gap-lg);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+.btn-primary {
+  background: var(--clr-neon);
+  color: #060a07;
+  font-weight: 700;
+}
+.btn-primary:hover {
+  background: var(--clr-accent);
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--clr-text-muted);
+  border: 1px solid var(--clr-border-md);
+}
+.btn-ghost:hover {
+  background: var(--clr-surface);
+  color: var(--clr-text);
+  border-color: var(--clr-neon-dim);
+}
+.btn-danger {
+  background: transparent;
+  color: var(--clr-danger);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+.btn-danger:hover {
+  background: rgba(248, 113, 113, 0.1);
+}
+
+/* Form elements */
+input, select, textarea {
+  font-family: var(--font-body);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border-md);
+  color: var(--clr-text);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--clr-neon);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+}
+input::placeholder { color: var(--clr-text-dim); }
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-neon {
+  0%, 100% { box-shadow: 0 0 10px rgba(74, 222, 128, 0.2); }
+  50%       { box-shadow: 0 0 30px rgba(74, 222, 128, 0.5); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+/* =============================================
+   RESPONSIVE (RWD)
+   ============================================= */
+
+/* Sidebar desktop: fixed, always visible (default) */
+.app-sidebar { transform: translateX(0); }
+.sidebar-mobile-toggle { display: none !important; }
+.sidebar-overlay { display: none !important; }
+
+/* Tablas: permiten scroll horizontal en pantallas pequeñas */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-responsive table { min-width: 640px; }
+
+@media (max-width: 900px) {
+  .sidebar-mobile-toggle { display: inline-flex !important; }
+  .sidebar-overlay { display: block !important; }
+
+  .app-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: none;
+  }
+  .app-sidebar.sidebar-open { transform: translateX(0); }
+
+  .app-main-content { margin-left: 0 !important; }
+
+  .app-topbar { padding: 0 16px !important; gap: 10 !important; }
+  .topbar-search { display: none !important; }
+
+  .app-main { padding: 20px 16px !important; }
+
+  /* Barridas: grids de 4 columnas colapsan */
+  .grid-kpis { grid-template-columns: 1fr 1fr !important; }
+}
+
+@media (max-width: 560px) {
+  .grid-kpis { grid-template-columns: 1fr !important; }
+  .app-sidebar { width: 80vw !important; }
+}

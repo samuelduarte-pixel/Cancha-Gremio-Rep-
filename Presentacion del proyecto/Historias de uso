@@ -1,0 +1,528 @@
+Historias de Usuario
+
+# HU01: Registro de Clientes
+
+## Rol
+Usuario nuevo
+
+## Objetivo
+Como usuario nuevo, quiero registrarme en la plataforma, para crear una cuenta y acceder a los servicios del sistema.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema solicita datos obligatorios: nombre, correo, teléfono y contraseña.  
+- Debe validarse que el correo no esté registrado.  
+- Se envía un correo de confirmación para activar la cuenta.  
+- El registro no debe completarse sin validación del correo.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU02: Inicio de Sesión Cliente
+
+## Rol
+Cliente registrado
+
+## Objetivo
+Como cliente registrado, quiero iniciar sesión, para acceder a mis funciones personalizadas.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema valida usuario y contraseña.  
+- Si las credenciales son incorrectas, debe mostrar un mensaje claro.  
+- Debe permitir recordar la sesión si el usuario lo desea.  
+- Debe funcionar correctamente desde cualquier dispositivo.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU03: Recuperar Contraseña
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero recuperar mi contraseña, para ingresar nuevamente a mi cuenta en caso de olvido.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El usuario ingresa su correo y recibe un enlace de recuperación.  
+- El enlace debe expirar por seguridad.  
+- El usuario debe poder asignar una nueva contraseña.  
+- Debe confirmarse el cambio mediante notificación.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU04: Actualizar Datos de Cliente
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero actualizar mis datos personales, para mantener mi información al día.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- Se permite modificar nombre, correo, teléfono y contraseña.  
+- El sistema valida el formato de correo y de teléfonos.  
+- Los cambios deben guardarse correctamente.  
+- Debe solicitar confirmación antes de actualizar información sensible.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU05: Crear Reservas
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero crear una reserva, para asegurar el uso de un servicio o espacio disponible.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema muestra horarios disponibles.  
+- Solo se permiten reservas en espacios no ocupados.  
+- Debe confirmarse la reserva inmediatamente.  
+- El usuario debe visualizar un resumen de su reserva.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU06: Confirmación Automática de Reservas
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero que mi reserva se confirme automáticamente, para evitar procesos manuales y tener seguridad del agendamiento.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema envía confirmación automática por correo o notificación.  
+- Debe indicar correctamente fecha, hora y servicio reservado.  
+- No debe confirmarse si el espacio está previamente ocupado.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU07: Cancelar Reservas
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero cancelar una reserva, para liberar el espacio si no puedo asistir.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- Solo se permiten cancelaciones antes del límite establecido.  
+- La reserva debe eliminarse del sistema.  
+- El sistema debe notificar la cancelación.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU08: Procesar Pagos
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero procesar mis pagos de forma segura, para completar mis reservas o compras dentro del sistema.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema debe aceptar métodos de pago válidos.  
+- Debe confirmar si el pago fue exitoso o rechazado.  
+- La transacción debe registrarse en la base de datos.  
+- El sistema debe asegurar la información financiera.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU09: Generar Comprobantes
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero recibir comprobantes de pago, para tener evidencia de mis transacciones.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El comprobante debe mostrar fecha, valor y referencia.  
+- Debe generarse en formato digital.  
+- Debe enviarse automáticamente al correo del usuario.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU10: Registrar Eventos
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero registrar eventos, para ofrecer actividades disponibles en el sistema.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- Se ingresan datos: nombre, fecha, descripción y disponibilidad.  
+- Debe validarse que no existan eventos duplicados.  
+- El evento debe quedar visible para los usuarios.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU11: Organizar Torneos
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero organizar torneos, para gestionar equipos, horarios y fases del evento.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- Permite registrar participantes.  
+- Permite definir fechas, reglas y categorías.  
+- El sistema debe generar la estructura del torneo.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU12: Enviar Notificaciones
+
+## Rol
+Usuario
+
+## Objetivo
+Como usuario, quiero recibir notificaciones, para estar informado sobre reservas, pagos o eventos.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- Deben enviarse ante cambios importantes (reserva, pago, cancelación).  
+- Pueden enviarse por correo o notificación interna.  
+- El mensaje debe ser claro y preciso.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU13: Gestionar Mantenimiento
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero gestionar mantenimientos de espacios o equipos, para garantizar su correcto funcionamiento.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- Permite registrar fecha, tipo de mantenimiento y responsable.  
+- Bloquea automáticamente la disponibilidad del espacio.  
+- Debe notificar al usuario si afecta reservas activas.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU14: Administrar Promociones
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero crear promociones, para ofrecer descuentos a los usuarios.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- Se registra nombre, porcentaje y fechas de vigencia.  
+- El sistema aplica el descuento automáticamente en pagos.  
+- No deben aplicarse promociones expiradas.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU15: Registrar Comentarios
+
+## Rol
+Cliente
+
+## Objetivo
+Como cliente, quiero registrar comentarios, para compartir mi experiencia.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- Permite ingresar texto y calificación.  
+- Debe asociarse el comentario al usuario.  
+- Debe mostrarse una confirmación.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU16: Filtrar Comentarios
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero filtrar comentarios, para visualizar los más relevantes o recientes.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema permite filtrar por fecha, calificación o usuario.  
+- La lista debe actualizarse dinámicamente.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+
+# HU17: Generar Reportes
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero generar reportes, para analizar información del sistema.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- Se generan reportes de reservas, pagos, eventos y usuarios.  
+- Los reportes deben poder exportarse.  
+- Debe mostrar datos actualizados en tiempo real.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+
+# HU18: Registrar Proveedores
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero registrar proveedores, para gestionar las empresas asociadas al sistema.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- Permite registrar nombre, contacto y tipo de servicio.  
+- Valida que no existan duplicados.  
+- Debe permitir editar información.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU19: Gestionar Insumos Deportivos
+
+## Rol
+Administrador
+
+## Objetivo
+Como administrador, quiero gestionar insumos deportivos, para controlar inventarios y disponibilidad.
+
+## Actores
+- Administrador  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema permite agregar, editar o eliminar insumos.  
+- Notifica cuando el inventario está bajo.  
+- Registra fecha de ingreso y estado del insumo.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.
+
+# HU20: Comunicación Directa
+
+## Rol
+Usuario
+
+## Objetivo
+Como usuario, quiero comunicarme directamente con administración, para resolver dudas o solicitudes rápidamente.
+
+## Actores
+- Usuario  
+- Sistema
+
+## Criterios de Aceptación
+- El sistema debe incluir chat o formulario de contacto.  
+- Debe generar un ticket o mensaje registrado.  
+- Debe mostrar confirmación de envío.
+
+---
+
+## Nota del Equipo
+Nosotros como equipo utilizamos un **formato estándar** que consiste en:  
+1. Establecer un **rol** (quién realizará la acción).  
+2. Definir el **objetivo** que se debe lograr para obtener un resultado claro.  
+3. Incluir los **criterios de aceptación**, para que sea entendible para todo el público.  
+Este enfoque asegura que cada historia de usuario sea clara, verificable y alineada con los objetivos del sistema.

@@ -1,0 +1,40 @@
+services:
+  # Base de datos PostgreSQL 17
+  db:
+    # Que: Imagen oficial de PostgreSQL 17 (version Alpine = mas liviana)
+    # Para que: Proveer la base de datos relacional del sistema
+    # Impacto: Aqui se almacenan usuarios, reservas, pagos, eventos, etc.
+    image: postgres:17-alpine
+    container_name: cancha_sintetica_db
+    restart: unless-stopped
+    environment:
+      # Variables que PostgreSQL usa al inicializar
+      # IMPORTANTE: Estos valores son SOLO para desarrollo local
+      POSTGRES_USER: cancha_user
+      POSTGRES_PASSWORD: cancha_password
+      POSTGRES_DB: cancha_sintetica_db
+    ports:
+      # Que: Mapea el puerto 5432 del contenedor al 5433 del host
+      # Para que: Permitir que el backend se conecte a la BD
+      # Impacto: Usamos 5433 por si ya tienes PostgreSQL local en 5432
+      - "5433:5432"
+    volumes:
+      # Que: Volumen nombrado que persiste los datos de PostgreSQL
+      # Para que: Los datos sobreviven al reinicio del contenedor
+      # Impacto: Sin volumen, cada restart de Docker borraria todos los datos
+      - cancha_sintetica_data:/var/lib/postgresql/data
+    healthcheck:
+      # Que: Comando que Docker ejecuta para verificar que PostgreSQL responde
+      # Para que: Saber si la BD esta lista antes de que el backend intente conectarse
+      # Impacto: Evita errores de conexion al iniciar
+      test: ["CMD-SHELL", "pg_isready -U cancha_user -d cancha_sintetica_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# Volumenes nombrados
+volumes:
+  # Que: Volumen Docker nombrado para persistencia de datos
+  # Para que: Almacenar datos de PostgreSQL de forma permanente
+  # Impacto: Los datos persisten aunque el contenedor se elimine
+  cancha_sintetica_data:
